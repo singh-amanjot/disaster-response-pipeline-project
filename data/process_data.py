@@ -34,6 +34,9 @@ def clean_data(df):
         
     # concatenate the original dataframe with the new `categories` dataframe
     df = pd.concat((df, categories), axis=1)
+
+    # replace 2s with 1 in related column
+    df.related.replace(2,1,inplace=True)   
         
     # drop duplicates
     df.drop_duplicates(inplace=True)
