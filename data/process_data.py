@@ -36,7 +36,7 @@ def clean_data(df):
     df = pd.concat((df, categories), axis=1)
 
     # replace 2s with 1 in related column
-    df.related.replace(2,1,inplace=True)   
+    df.related.replace(2, 1, inplace=True)   
         
     # drop duplicates
     df.drop_duplicates(inplace=True)
@@ -46,7 +46,7 @@ def clean_data(df):
 
 def save_data(df, database_filename):
     engine = create_engine('sqlite:///{}'.format(database_filename))
-    df.to_sql('Messages', engine, index=False)
+    df.to_sql('messages', engine, index=False, if_exists='replace')
 
 
 def main():
