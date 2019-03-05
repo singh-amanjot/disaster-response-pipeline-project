@@ -55,13 +55,13 @@ def build_model():
     # params dict to tune a model
     parameters = {
         'clf__estimator__min_samples_split': [2, 4],
-        'clf__estimator__max_features': [None, 'log2', 'auto', 'sqrt'],
+        'clf__estimator__max_features': [None, 'log2', 'sqrt'],
         'clf__estimator__criterion': ['gini', 'entropy'],
-        'clf__estimator__max_depth': [None, 25, 50, 100, 150, 200],
+        'clf__estimator__max_depth': [25, 100, 200],
     }
 
     # instantiate a gridsearchcv object with the params defined
-    cv = GridSearchCV(pipeline, param_grid=parameters)
+    cv = GridSearchCV(pipeline, param_grid=parameters, verbose=4, n_jobs=6)
     
     return cv
     
